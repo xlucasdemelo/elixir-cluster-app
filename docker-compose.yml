@@ -1,0 +1,44 @@
+version: '3'
+services:
+  node1:
+    image: nodzz
+    container_name: node1
+    environment:
+      - ELIXIR_NODE_NAME=node1@node1  # Use the service name as the hostname
+      - ELIXIR_COOKIE=my_secret_cookie
+    networks:
+      - elixir_net
+    ports:
+      - "4001:4000"  # Exposing HTTP port
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+  node2:
+    image: nodzz
+    container_name: node2
+    environment:
+      - ELIXIR_NODE_NAME=node2@node2  # Use the service name as the hostname
+      - ELIXIR_COOKIE=my_secret_cookie
+    networks:
+      - elixir_net
+    ports:
+      - "4002:4000"  # Exposing HTTP port
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+  node3:
+    image: nodzz
+    container_name: node3
+    environment:
+      - ELIXIR_NODE_NAME=node3@node3  # Use the service name as the hostname
+      - ELIXIR_COOKIE=my_secret_cookie
+    networks:
+      - elixir_net
+    ports:
+      - "4003:4000"  # Exposing HTTP port
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+networks:
+  elixir_net:
+    driver: bridge
